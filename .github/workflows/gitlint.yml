@@ -1,0 +1,26 @@
+---
+name: gitlint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+
+  gitlint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install gitlint
+        run: pip install gitlint
+
+      - name: run gitlint
+        run: gitlint
